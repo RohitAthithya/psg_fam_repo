@@ -1,0 +1,5 @@
+1. My git could not push to remote :
+    - it was using default credentials stored in the local credentials manager of windows
+    - i changed it: by reading "https://stackoverflow.com/a/68903010/14827069"
+
+2.
