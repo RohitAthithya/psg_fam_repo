@@ -1,4 +1,4 @@
-while(input("press enter to continue , 'n' to exit").strip().lower() != "n" ):
+while(input("press enter to continue , 'n' to exit: ").strip().lower() != "n" ):
     jt_sp = input('Enter SPACE seperated joint data: ').split(' ')
     count = len(jt_sp)
     itervar = 0
