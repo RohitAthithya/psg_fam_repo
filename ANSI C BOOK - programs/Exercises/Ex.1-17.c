@@ -3,12 +3,12 @@
 #include <stdio.h>
 #define MAXLINE 1000 // maximum input line length is upto 80
 #define LIMIT 80
-#define CTRL(x)  (x & 0x1F)   
+#define CTRL(x)  (x & 0x1F)
 
 //function prototypes
 int getLine(char line[], int limit); //this returns the length of the line that was read => to measure if it is >0
 
-//Main: Print all the lines from the input, upto 80characters of input 
+//Main: Print all the lines from the input, upto 80characters of input
 main()
 {
     int length;
@@ -22,7 +22,7 @@ main()
     return 0;
 }
 
-// getline: read a line into s, return length 
+// getline: read a line into s, return length asd as
 int getLine(char s[], int lim)
 {
     int c, i;
