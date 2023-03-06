@@ -1,38 +1,102 @@
-/*Exercise 1-18. Write a program to remove trailing blanks and tabs from each line of
- input, and to delete entirely blank lines.*/
-
+/*
+Exercise 1-18. Write a program to remove trailing (blanks and tabs) from each line of
+input, and to delete entirely blank lines.
+*/
 //note we don't need to store all the lines, we just need to throw them to the output!
 #include <stdio.h>
 
 #define CTRL(x) (x & 0x1F)
 #define MAXLINE 1000
 
-int getLine(char str[]);
+int getLine(char string[]);
+int processedInputLine(char string[], int length);
 int main()
 {
-    char string[MAXLINE];
-    while (getLine(string) > 0) //ignores the completely blank lines here
+    char string[MAXLINE]; // the string was overwritten
+    int len = 0;
+    while ((len = getLine(string)) > 0)
     {
-        printf("%s", string);
+        if (processedInputLine(string, len) > 0)
+            printf("%s", string);
     }
 }
 
 int getLine(char string[])
 {
+    int iter = 0;
+    int chr = 0;
+    for ( iter = 0; ( (iter < MAXLINE) && ( (chr = getchar()) != '\n' ) && chr != EOF ) ; ++iter )// iteration variable increment stt.
+    {
+        string[iter] = chr;
+    }
+    if(chr == '\n')
+    {
+        string[iter] = '\n';
+        ++iter;
+    }
+    string[iter] = '\0';
+    return iter; // count of the characters that was read!]
+}
+
+int processedInputLine(char string[], int length)
+{
+    int i;
+    char flag = 1;
+    for (i = length; flag != 0; --i)
+    {
+        if (string[i] != ' ' && string[i] != '\t' && string[i] != '\n')
+        {
+            ++i;
+            string[i] = '\n';
+            ++i;
+            string[i] = '\0';
+            flag = 0;
+        }
+    }
+    return i;
+}
+
+
+/* this still fails some test cases like having a ' \t\t ' , '\t \t' => like so ...
+int main()
+{
+    int flag = 1;
+    while (flag > 0) //ignores the completely blank lines here
+    {
+        char string[MAXLINE]; // the string was overwritten
+        // continuously for every input => resulting in overwriting of the same string!
+        if (getLine(string) > 0)
+        {
+            printf("%s", string);
+        }
+        else
+            flag = 0;
+    }
+}
+
+int getLine(char string[])
+{
+    fflush(stdin);
     int chr = 0;
     int iter = 0;
     for (iter = 0; (iter < MAXLINE) && ((chr = getchar()) != '\n') && (chr != CTRL('d')); ++iter)
     {
         if (chr == ' ')
         {
-            string[iter] = chr;
+            string[iter] = chr; // to get just one space
             while ((chr = getchar()) == ' ')
                 ;//do nothing until a character other than ' ' is met with!
-            ++iter;
         }
-        if (chr != '\t')
-            string[iter] = chr;
+        // if (chr != '\t')
+        //     string[iter] = chr;
         //else ignore that character
+        if (chr == '\t')
+        {
+            while ((chr = getchar()) == '\t')
+                ;// do nothing if there are many tabs together
+            --iter; // as iter will get updated in the for loop's head!
+        }
+        string[iter] = chr;
     }
     if (chr == '\n' || chr == CTRL('d'))
     {
@@ -42,11 +106,10 @@ int getLine(char string[])
     string[iter] = '\0';
     return iter; // count of the characters that was read!]
 }
+*/
 
-
-
-
-/* #include <stdio.h>
+/* initial => need to work more on the work
+#include <stdio.h>
 #include <stdint.h>
 #define CTRL(x)  (x & 0x1F)
 #define MAXLINE 1000
