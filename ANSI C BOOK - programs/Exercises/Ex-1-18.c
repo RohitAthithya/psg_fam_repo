@@ -10,7 +10,7 @@ input, and to delete entirely blank lines.
 
 int getLine(char string[]);
 int processedInputLine(char string[], int length);
-int main()
+main()
 {
     char string[MAXLINE]; // the string was overwritten
     int len = 0;
@@ -55,7 +55,7 @@ int processedInputLine(char string[], int length)
             flag = 0;
         }
     }
-    return i;
+    return i; //the --i takes care of: Not including the null character in the length of the string!
 }
 
 
