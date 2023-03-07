@@ -42,7 +42,9 @@ int processedInputLine(char string[], int length)
 {
     int i;
     char flag = 1;
-    for (i = length; flag != 0; --i)
+    for (i = length-1; flag != 0; --i) //previously I had put i=length and missed a crucial case:
+    // string[i] became the character after the NULL character! as the for loop , incremented the length by 1
+    //before breaking out of the loop in the getLine() function!
     {
         if (string[i] != ' ' && string[i] != '\t' && string[i] != '\n')
         {
