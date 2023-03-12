@@ -1,0 +1,16 @@
+Embedded C coding standard:
+https://barrgroup.com/embedded-systems/books/embedded-c-coding-standard
+
+---------------------------------------------------------------------------------------
+
+Python is a versatile and high-level programming language that is commonly used for scripting and automation tasks. It is also well-suited for rapid prototyping and testing, which are important tasks in embedded systems development. Additionally, Python has a large and active community, which provides a wealth of libraries and modules that can be used for embedded systems development, such as for communication protocols, data processing, and machine learning. Python can also be used as glue code to bring together different parts of the embedded system, like connecting microcontroller's low level C code with high level system.
+C and Rust are also commonly used in embedded systems development because they are efficient and allow for low-level manipulation of hardware. However, in some cases, Python can be used in addition to or in conjunction with these languages to provide additional functionality and ease of use for certain tasks.
+Here are a few websites that discuss the use of Python in embedded systems development:
+1. Adafruit Industries: https://www.adafruit.com/category/85 - Adafruit provides a wide range of tutorials and guides on using Python with embedded systems, such as microcontrollers, sensors, and displays.
+2. Embedded.com: https://www.embedded.com/tag/python - This website contains articles and tutorials on various embedded systems topics, including the use of Python in embedded development.
+3. Python for Microcontrollers: https://circuitpython.org/ - This website provides resources and tutorials for using Python with microcontrollers, including information on libraries, boards, and other tools.
+4. Pycom: https://www.pycom.io/ - Pycom is a company that provides Python-based development boards and tools for IoT and embedded systems development.
+5. PyCon: https://us.pycon.org/2022/community/tutorials/embedded/ - PyCon is an annual conference on Python, it's tutorials and talks often cover the use of Python in embedded systems development.
+These are a few of the many resources available to learn and use Python in embedded systems development.
+
+
