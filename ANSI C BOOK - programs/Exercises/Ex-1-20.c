@@ -5,6 +5,10 @@
 */
 
 
+/**Another solution */
+
+
+
 /* !    My Solution     !*/
 #include <stdio.h>
 
