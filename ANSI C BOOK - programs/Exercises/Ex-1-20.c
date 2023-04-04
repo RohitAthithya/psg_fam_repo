@@ -69,7 +69,7 @@ int getLine(void) //uses global string: line
     return iter;
 }
 
-/**
+/** Function: detab() descritpion:... 
  * Input: string from the user
  * Output: the string's tab is replaced by spaces according to the tabstops
  *
