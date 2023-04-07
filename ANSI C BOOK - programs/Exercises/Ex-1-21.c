@@ -51,8 +51,6 @@ int getLine(void) //uses global string: line
 /**
  * Entab the input!
  * Convert all the blank spaces to a tabs,
- *
- *
 */
 void entab(void)
 {
@@ -69,15 +67,16 @@ void entab(void)
     */
     for (in_iter = 0; ((line[in_iter]) != '\0') ; ++in_iter )
     {
-        track_length++;
+        track_length++; //we are incrementing here to show: we are on the 1st col. of the row
         if (line[in_iter] == '\n')
         {
-            entab_line[out_iter] = line[in_iter];
+            entab_line[out_iter] = '\n';// = line[in_iter];
             track_length = 0;
             blanks = 0;
         }
         else if( line[in_iter] == ' ')
         {
+            track_length--; // reduce to account for the blank detected!
             //count amount of blanks next in the input sequnece
             int temp_iter = in_iter;
             while(line[temp_iter] == ' ')//increment the temp_iter till there is a non-blank character
@@ -85,8 +84,8 @@ void entab(void)
                 temp_iter++;
             }
             //temp_iter now has the no. of blanks in line after the encountered blank!
-            int blanks_available = temp_iter - in_iter;
-            distance_from_tabstop = TABSTOPLEN - (track_length % TABSTOPLEN);
+            int blanks_available = temp_iter - in_iter;// if there are 3 blanks after the enocunter of the 1st balnk => balnks_availabale => 4!
+            distance_from_tabstop = TABSTOPLEN - (track_length % TABSTOPLEN);//note that tabstoplen = 4 => col.4 ot tracklength = 4 => is the tabstop.
             while (blanks_available >= distance_from_tabstop)
             {
                 entab_line[out_iter] = '\t';
@@ -95,7 +94,7 @@ void entab(void)
                 track_length = track_length + distance_from_tabstop;
                 distance_from_tabstop = TABSTOPLEN - (track_length % TABSTOPLEN);
             }
-            while (blanks_available)
+            while (blanks_available >0) //while (blanks_available) => can use this too!
             {
                 entab_line[out_iter] = ' ';
                 out_iter++;
@@ -112,9 +111,9 @@ void entab(void)
             blanks = 0;
         }
     }
+    out_iter++;
+    entab_line[out_iter];
 }
-
-
 
 /**soln. 1 => passed many testcase, but fails a lot of tabstop related cases
  * #include <stdio.h>
