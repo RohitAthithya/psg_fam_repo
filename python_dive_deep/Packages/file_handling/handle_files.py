@@ -131,26 +131,3 @@ def get_size_of_folder_in_bytes(start_path:Path|str = '.') -> int[bytes]:
                 total_size += getsize(fp)
     return total_size
 
-
-def move_files_from_zip_to_dest(src_path:Path|str, target_file_extension:str, dest_path:Path|str):
-    """### Move files with 'target_file_extension' from 'src_path' to 'dest_path':
-    #### Note: No validation of input.
-    Args:
-        src_path (Path | str): A Zip File's absolute path
-        target_files_extension (str): extension of the file(s) to move
-        dest_path (Path | str): Extracted files will be moved here
-    """
-    input_path = Path(src_path)
-    _validate_path()
-    if not os.path.isdir(input_path):
-        print("no such directory exists")
-
-    for (root,dirs,files) in os.walk(input_path, topdown=True):
-        for file in files:
-            if 'zip' == str( file.partition('.')[-1]):
-                files_within_zip = os.listdir(file)
-                for file_in_zip in files_within_zip:
-                    if file_in_zip.rfind('.ipynb') > 0:
-                        print(Path(file, file_in_zip))
-
-
